@@ -4,6 +4,7 @@ const express = require("express"),
 port = process.env.PORT || 3000;
 
 const mysql = require("mysql");
+
 // connection configurations
 const mc = mysql.createConnection({
   host: "localhost",
@@ -22,5 +23,5 @@ console.log("API server started on: " + port);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require("./app/routes/approutes"); //importing route
-routes(app); //register the route
+var routes = require("./app/routes/appRoutes"); // importing route
+routes(app); // register the route
