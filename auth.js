@@ -11,7 +11,6 @@ let JwtStrategy = passportJWT.Strategy;
 let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = "wowwow";
-console.log("jwtOptions", jwtOptions);
 
 // lets create our strategy for web token
 let strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
@@ -36,8 +35,8 @@ app.get("/", function(req, res) {
   res.json({ message: "Express is up!" });
 });
 // start the app
-app.listen(3000, function() {
-  console.log("Express is running on port 3000");
+app.listen(3001, function() {
+  console.log("Express is running on port 3001");
 });
 
 // parse application/json
@@ -52,7 +51,7 @@ const sequelize = new Sequelize({
   password: "",
   dialect: "mysql"
 });
-// check the databse connection
+// check the database connection
 sequelize
   .authenticate()
   .then(() => console.log("Connection has been established successfully."))
