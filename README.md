@@ -1,6 +1,6 @@
 # Launch
 
-- node server.js
+- npm start
 
 # Doc
 
