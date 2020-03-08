@@ -1,3 +1,5 @@
+const argon2 = require("argon2");
+
 module.exports = (app, models, passport, jwt, jwtOptions) => {
   const prepareUserRes = user =>
     Object.assign({
@@ -12,9 +14,15 @@ module.exports = (app, models, passport, jwt, jwtOptions) => {
 
   // register route
   app.post("/api/register", (req, res) => {
-    console.log("register body", req.body);
-    models.user.create(req.body).then(user => {
-      res.json(prepareUserRes(user.dataValues));
+    console.log("REGISTER body", req.body);
+    const userReq = Object.assign({}, req.body);
+    argon2.hash(req.body.password).then(passwordHashed => {
+      userReq.password = passwordHashed;
+      console.log("REGISTER userReq", userReq);
+
+      models.user.create(userReq).then(user => {
+        res.json(prepareUserRes(user.dataValues));
+      });
     });
   });
 
@@ -28,14 +36,18 @@ module.exports = (app, models, passport, jwt, jwtOptions) => {
           where: { email: email },
           attributes: ["id", "name", "email", "password"]
         })
-        .then(user => {
-          console.log("login findOne user", user.dataValues);
-          if (!user) {
-            res.status(401).json({ msg: "No such user found", user });
-          } else if (user.password === password) {
-            res.json(prepareUserRes(user.dataValues));
+        .then(userRes => {
+          console.log("login findOne user", userRes.dataValues);
+          if (!userRes) {
+            res.status(401).json({ msg: "No such user found", userRes });
           } else {
-            res.status(401).json({ msg: "Password is incorrect" });
+            argon2.verify(userRes.password, password).then(correctPassword => {
+              if (!correctPassword) {
+                res.status(401).json({ msg: "Password is incorrect" });
+              } else {
+                res.json(prepareUserRes(userRes.dataValues));
+              }
+            });
           }
         });
     }
