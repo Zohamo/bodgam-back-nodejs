@@ -1,6 +1,7 @@
 # Launch
 
-- `npm start`
+MySQL :
+
 - run MySQL shell : `sudo /usr/bin/mysql -u root -p`
 - exit MySQL shell : `exit`
 
@@ -24,19 +25,6 @@
 - Auth : https://medium.com/@siddharthac6/json-web-token-jwt-the-right-way-of-implementing-with-node-js-65b8915d550e
 - Model Associations : https://sequelize.org/master/manual/creating-with-associations.html
 
-## Conventions
+# Git
 
-### Git prefixes for commits
-
-- :boom: First Commit or MAJOR UPDATE
-- :green_book: DOC
-- :toilet: CLEANUP
-- :star2: FEATURE
-- :lock: SECURITY
-- :bookmark: TAG
-- :hammer: REFACTOR
-- :wrench: CONFIG
-- :construction: WIP
-- :bug: BUGFIX
-
-- [Complete list of github markdown emoji markup](https://gist.github.com/rxaviers/7360908)
+Helpers for Git workflow and conventions [from Zohamo](https://github.com/Zohamo/git-helpers).
