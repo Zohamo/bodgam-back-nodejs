@@ -23,3 +23,20 @@
 - Auth : https://www.codementor.io/olatundegaruba/5-steps-to-authenticating-node-js-with-jwt-7ahb5dmyr
 - Auth : https://medium.com/@siddharthac6/json-web-token-jwt-the-right-way-of-implementing-with-node-js-65b8915d550e
 - Model Associations : https://sequelize.org/master/manual/creating-with-associations.html
+
+## Conventions
+
+### Git prefixes for commits
+
+- :boom: First Commit or MAJOR UPDATE
+- :green_book: DOC
+- :toilet: CLEANUP
+- :star2: FEATURE
+- :lock: SECURITY
+- :bookmark: TAG
+- :hammer: REFACTOR
+- :wrench: CONFIG
+- :construction: WIP
+- :bug: BUGFIX
+
+- [Complete list of github markdown emoji markup](https://gist.github.com/rxaviers/7360908)
